@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Template</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+
+    <p>Your groups:</p>
+    <ul>
+        {% for group in user_groups %}
+            <li>{{ group.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
