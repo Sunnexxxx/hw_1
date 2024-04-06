@@ -122,3 +122,26 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# settings.py
+
+import os
+import logging
+
+# Определите путь к каталогу для файлов журнала
+LOG_DIR_PATH = os.path.join(BASE_DIR, 'logs')
+
+# Создайте каталог, если его нет
+if not os.path.exists(LOG_DIR_PATH):
+    os.makedirs(LOG_DIR_PATH)
+
+# Определите полный путь к файлу журнала
+LOG_FILE_PATH = os.path.join(LOG_DIR_PATH, 'django.log')
+
+# Настройка логирования
+logging.basicConfig(
+    filename=LOG_FILE_PATH,
+    level=logging.ERROR,  # Уровень журналирования для ошибок
+    format='%(asctime)s [%(levelname)s] %(module)s - %(message)s'
+)
+
+

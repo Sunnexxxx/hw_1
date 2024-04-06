@@ -1,10 +1,19 @@
-from django.shortcuts import render
-from django.contrib.auth.models import Group
-from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+import logging
 
-@login_required
-def context_handler(request):
-    user = request.user
-    user_groups = Group.objects.filter(user=user)
-    return render(request, 'main.html', {'user': user, 'user_groups': user_groups})
+
+def my_view(request):
+    logger = logging.getLogger(__name__)
+
+    try:
+        # Код, который может вызвать ошибку
+        result = 1 / 0
+    except ZeroDivisionError:
+        # Логирование ошибки
+        logger.exception("Ошибка деления на ноль")
+
+    return HttpResponse("Готово")
+
+
+
 
